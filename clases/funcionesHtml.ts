@@ -12,8 +12,7 @@ namespace Personas
         (<HTMLInputElement>document.getElementById("edadOcultar")).addEventListener("change",filtradoColumna);
         (<HTMLInputElement>document.getElementById("sexoOcultar")).addEventListener("change",filtradoColumna);
         (<HTMLInputElement>document.getElementById("filtroSexo")).addEventListener("change",filtrador);
-        //(<HTMLInputElement>document.getElementById("filtrador")).addEventListener("keyup",filtrador); 
-        //(<HTMLInputElement>document.getElementById("btnPromedio")).addEventListener("click",promedio); 
+        (<HTMLInputElement>document.getElementById("btnPromedio")).addEventListener("click",promedio); 
     })
 
     window.addEventListener("load",hideForm);
@@ -85,15 +84,16 @@ namespace Personas
         }
         
     }
+    
     function vaciarAlta()
     {
         (<HTMLInputElement>document.getElementById("id")).value = "";
         (<HTMLInputElement>document.getElementById("nombre")).value = "";
         (<HTMLInputElement>document.getElementById("apellido")).value = "";
         (<HTMLInputElement>document.getElementById("edad")).value = "";
-        (<HTMLInputElement>document.getElementById("sexo")).value = "";
         (<HTMLInputElement>document.getElementById("sexo")).value = "1";
     }
+
     function agregarItemTabla(id:string, nombre:string, apellido:string, edad:string,sexo:string){
         var tCuerpo = document.getElementById("tCuerpo");
         var row = document.createElement("tr");
@@ -138,6 +138,7 @@ namespace Personas
         row.addEventListener("dblclick",clickGrilla);
         (<HTMLInputElement>tCuerpo).appendChild(row);
     }
+
     export function eliminar()
     {
         var indice = listaPersonas.reduce(function(idTotal,item,index)
@@ -201,6 +202,27 @@ namespace Personas
         listaFiltradaGlobal = filterVehiculo;
         borrarTabla();
         rearmarTabla(filterVehiculo);
+    }
+
+    export function promedio(){
+        var listaEdad:Array<number>;
+        var promedio:number;
+        if(listaFiltradaGlobal.length > 0)
+        {
+            listaEdad = listaFiltradaGlobal.map(x => (<Cliente>x).edad);
+            promedio = listaEdad.reduce(function(total, num){
+                total += num;
+                return total;
+            },0);
+        }else
+        {
+            listaEdad = listaPersonas.map(x => (<Cliente>x).edad);
+            promedio = listaEdad.reduce(function(total, num){
+                total += num;
+                return total;
+            },0);
+        }
+        (<HTMLInputElement>document.getElementById("promedio")).value = (promedio/listaEdad.length).toString();
     }
 
     function borrarTabla()

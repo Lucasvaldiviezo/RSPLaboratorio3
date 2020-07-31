@@ -12,8 +12,7 @@ var Personas;
         document.getElementById("edadOcultar").addEventListener("change", filtradoColumna);
         document.getElementById("sexoOcultar").addEventListener("change", filtradoColumna);
         document.getElementById("filtroSexo").addEventListener("change", filtrador);
-        //(<HTMLInputElement>document.getElementById("filtrador")).addEventListener("keyup",filtrador); 
-        //(<HTMLInputElement>document.getElementById("btnPromedio")).addEventListener("click",promedio); 
+        document.getElementById("btnPromedio").addEventListener("click", promedio);
     });
     window.addEventListener("load", hideForm);
     var listaPersonas = new Array();
@@ -80,7 +79,6 @@ var Personas;
         document.getElementById("nombre").value = "";
         document.getElementById("apellido").value = "";
         document.getElementById("edad").value = "";
-        document.getElementById("sexo").value = "";
         document.getElementById("sexo").value = "1";
     }
     function agregarItemTabla(id, nombre, apellido, edad, sexo) {
@@ -183,6 +181,26 @@ var Personas;
         rearmarTabla(filterVehiculo);
     }
     Personas.filtrador = filtrador;
+    function promedio() {
+        var listaEdad;
+        var promedio;
+        if (listaFiltradaGlobal.length > 0) {
+            listaEdad = listaFiltradaGlobal.map(function (x) { return x.edad; });
+            promedio = listaEdad.reduce(function (total, num) {
+                total += num;
+                return total;
+            }, 0);
+        }
+        else {
+            listaEdad = listaPersonas.map(function (x) { return x.edad; });
+            promedio = listaEdad.reduce(function (total, num) {
+                total += num;
+                return total;
+            }, 0);
+        }
+        document.getElementById("promedio").value = (promedio / listaEdad.length).toString();
+    }
+    Personas.promedio = promedio;
     function borrarTabla() {
         var tCuerpo = document.getElementById("tCuerpo");
         tCuerpo.innerHTML = "";
