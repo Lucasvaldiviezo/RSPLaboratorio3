@@ -1,9 +1,9 @@
 <html>
     <head>
         <title>Recuperatorio 2do Parcial</title>
-        <script src="./clases/Vehiculo.js"></script> 
-        <script src="./clases/Auto.js"></script> 
-        <script src="./clases/Camioneta.js"></script> 
+        <script src="./clases/Persona.js"></script>
+        <script src="./clases/eTipo.js"></script> 
+        <script src="./clases/Cliente.js"></script> 
         <script src="./clases/funcionesHtml.js"></script> 
         <link rel="stylesheet" href="./css/estilo.css"></link> 
     </head>
@@ -11,27 +11,20 @@
         <input type="button" value="Alta" id = "btnAlta">
         <div id="contAgregar" class="contenedor" >
             <label>ID:</label>
-            <input type="text" id="id" class="sinError" name="marcaVehiculo" disabled><br><br>
-            <label for="marca">Marca:</label>
-            <input type="text" id="marca" class="sinError" name="marcaVehiculo"><br><br>
-            <label for="modelo">Modelo:</label>
-            <input type="text" id="modelo" class="sinError" name="modeloVehiculo"><br><br>
-            <label for="precio">Precio:</label>
-            <input type="text" id="precio" class="sinError" name="precioVehiculo"><br><br>
-            <label for="tipoVehiculo">Tipo de Vehiculo:</label> <br>
-            <select name="tipoDeVehiculo" id="tipoVehiculo" class="select">
-                <option value="1" selected>Auto</option>
-                <option value="2">Camioneta</option>
+            <input type="text" id="id" class="sinError" name="idPersona" disabled><br><br>
+            <label for="marca">Nombre:</label>
+            <input type="text" id="nombre" class="sinError" name="nombrePersona"><br><br>
+            <label for="modelo">Apellido:</label>
+            <input type="text" id="apellido" class="sinError" name="apellidoPersona"><br><br>
+            <label for="precio">Edad:</label>
+            <input type="number" id="edad" class="sinError" name="edadPersona"><br><br>
+            <label for="sexo">Sexo:</label> <br>
+            <select name="sexoPersona" id="sexo" class="select">
+                <option value="1" selected>Masculino</option>
+                <option value="2">Femenino</option>
             </select><br>
-            <div id="infoAuto">
-                <label for="cantPuertas"> Cantidad de Puertas</label><br>
-                <input type="number" id="cantPuertas" name="autoPuertas"><br><br> 
-            </div>
-            <div id="infoCamioneta">
-                <input type="checkbox" id="cuatroXcuatro" name="camionetaBool">
-                <label for="cuatroXcuatro"> ¿Es 4x4?</label><br><br>
-            </div>
             <input type="button" value="Agregar" id = "btnAgregar">
+            <input type="button" value="Elminar" id = "btnEliminar">
             <input type="button" value="Cerrar" id = "btnCerrar">
         </div><br><br>
         <div id="filtroCont" class="filtrosCont">
@@ -39,17 +32,22 @@
             <label for="promedio">Calcular Promedio:</label>
             <input type="text" id="promedio" name="promedioText">
             <input type="button" value="Promedio" id = "btnPromedio"><br>
-            <br><label for="filtrador">Buscar por Modelo:</label>
-            <input type="text" id="filtrador" name="barraFiltro"><br>
-            </select><br><br>
-            <label for="idOcultar">|ID:</label>
+            <br><label for="filtrador">Filtrar por:</label>
+            <select name="filtradorSexo" id="filtroSexo" class="select">
+                <option value="1" selected>Masculino</option>
+                <option value="2">Femenino</option>
+            </select><br>
             <input type="checkbox" id="idOcultar" name="idFiltrado" checked>
-            <label for="marcaOcultar">|Marca:</label>
-            <input type="checkbox" id="marcaOcultar" name="marcaFiltrado" checked>
-            <label for="modeloOcultar">|Modelo:</label>
-            <input type="checkbox" id="modeloOcultar" name="modeloFiltrado"checked>
-            <label for="precioOcultar">|Precio:</label>
-            <input type="checkbox" id="precioOcultar" name="precioFiltrado"checked>
+            <label for="idOcultar">ID</label>
+            <input type="checkbox" id="nombreOcultar" name="nombreFiltrado" checked>
+            <label for="nombreOcultar">Nombre</label>
+            <input type="checkbox" id="apellidoOcultar" name="apellidoFiltrado" checked>
+            <label for="apellidoOcultar">Apellido</label>
+            <input type="checkbox" id="edadOcultar" name="edadFiltrada"checked>
+            <label for="edadOcultar">Edad</label>
+            <input type="checkbox" id="sexoOcultar" name="sexoFiltrado"checked>
+            <label for="sexoOcultar">Sexo</label>
+            <input type="button" id="btnLimpiar" value="Vaciar Lista">
         </div>
         
         <h3>Lista de Vehiculos</h3>
@@ -57,10 +55,10 @@
             <thead>
                 <tr>
                     <th name="idTabla">ID</th>
-                    <th name="marcaTabla">Marca</th>
-                    <th name="modeloTabla">Modelo</th>
-                    <th name="precioTabla">Precio</th>
-                    <th> Accion</th>
+                    <th name="nombreTabla">Nombre</th>
+                    <th name="apellidoTabla">Apellido</th>
+                    <th name="edadTabla">Edad</th>
+                    <th name="sexoTabla">Sexo</th>
                 </tr>
             </thead>
             <tbody id="tCuerpo">

@@ -74,7 +74,7 @@ input[type=number]
     background-color:rgb(114, 240, 114);
     border-radius: 4px;
     box-sizing: border-box;
-    left: 35% 
+    left: 25% 
 }
 
 #btnCerrar
@@ -85,7 +85,18 @@ input[type=number]
     background-color:rgb(241, 144, 184);
     border-radius: 4px;
     box-sizing: border-box;
-    left: 40% 
+    left: 35% 
+}
+
+#btnLimpiar
+{
+    position: relative;
+    display: inline-block;
+    padding: 10px 10px;
+    background-color:rgb(241, 144, 184);
+    border-radius: 4px;
+    box-sizing: border-box;
+    left: 10% 
 }
 
 #btnAlta
@@ -100,7 +111,7 @@ input[type=number]
 
 
 
-.btnEliminar
+#btnEliminar
 {
     position: relative;
     display: inline-block;
@@ -108,6 +119,7 @@ input[type=number]
     background-color:rgb(227, 247, 115);
     border-radius: 4px;
     box-sizing: border-box;
+    left: 30% 
 }
 
 .select
